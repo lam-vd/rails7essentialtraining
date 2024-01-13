@@ -1,0 +1,2 @@
+module CatecogiesHelper
+end

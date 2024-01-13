@@ -1,6 +1,5 @@
-class TasksController < ApplicationController
+class CategoriesController < ApplicationController
   def index
-    @tasks = Task.order(:position)
   end
 
   def show
@@ -23,4 +22,5 @@ class TasksController < ApplicationController
 
   def destroy
   end
+  
 end

@@ -1,9 +1,30 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
-<ul>
-    <% @tasks.each do |task| %>
-    <li><%= task %></li>
-    <% end %>
-</ul>
+<%= link_to("Back to Homepage", root_path) %><br />
 
-<%= link_to 'first task', task_path(1)%>
+<div class="tasks index">
+    <h2>Tasks</h2>
+
+    <%= link_to("Add New Task", new_task_path ,class: 'action new') %>
+
+    <table class="listing" sumsary="Task list" style="width: 100%; text-align: center;">
+        <tr ckass="header">
+            <th>#</th>
+            <th>Task</th>
+            <th>Comp1eted</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        <% @tasks.each do |task| %>
+        <tr>
+            <td><%= task.position %></td>
+            <td><%= task.name %></td>
+            <td><%= task.completed? ? 'Yes' : 'No' %></td>
+            <td><%= task.category&.name || '=' %></td>
+            <td class="actions">
+                <%= link_to("Show", task_path(task) ,class: 'action show') %>
+                <%= link_to("Edit", edit_task_path(task) ,class: 'action edit') %>
+                <%= link_to("Delete", delete_task_path(task), class: 'action delete') %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
